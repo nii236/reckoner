@@ -1,0 +1,3 @@
+package: github.com/nii236/btcer
+import:
+- package: github.com/btcsuite/btcrpcclient
