@@ -1,38 +1,21 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
 	"io/ioutil"
 	"log"
 	"path/filepath"
-	"time"
 
-	"github.com/pkg/errors"
-
-	"github.com/btcsuite/btcd/btcjson"
-	"github.com/btcsuite/btcd/wire"
 	btc "github.com/btcsuite/btcrpcclient"
 	"github.com/btcsuite/btcutil"
+	"github.com/knakk/rdf"
+	"github.com/pkg/errors"
 )
 
 func main() {
-	notificationHandlers := btc.NotificationHandlers{
-		OnTxAccepted: func(hash *wire.ShaHash, amount btcutil.Amount) {
-			log.Println("Accepted TX:", hash, amount)
-		},
-		OnRecvTx: func(transaction *btcutil.Tx, details *btcjson.BlockDetails) {
-			log.Println("Received TX:", transaction, details)
-		},
-		OnBlockConnected: func(hash *wire.ShaHash, height int32, time time.Time) {
-			log.Printf("Block connected: %v (%d) %v", hash, height, time)
-		},
-		OnBlockDisconnected: func(hash *wire.ShaHash, height int32, time time.Time) {
-			log.Printf("Block disconnected: %v (%d) %v", hash, height, time)
-		},
-	}
 	// Connect to local btcd RPC server using websockets.
 	btcdHomeDir := btcutil.AppDataDir("btcd", false)
-	fmt.Println("BTCDHomeDir:", btcdHomeDir)
 	certs, err := ioutil.ReadFile(filepath.Join(btcdHomeDir, "rpc.cert"))
 	if err != nil {
 		log.Fatal(errors.New("Could not get cert"), err)
@@ -44,16 +27,38 @@ func main() {
 		User:         "user",
 		Pass:         "pass",
 	}
-	c, err := btc.New(config, &notificationHandlers)
+	c, err := btc.New(config, nil)
 	if err != nil {
 		log.Fatal(errors.New("Could not create client:"), err)
 	}
-	c.NotifyBlocks()
-	log.Println("NotifyBlocks Done")
-	blockCount, err := c.GetBlockCount()
-	if err != nil {
-		log.Fatal(err)
+	for i := 100000; i < 100800; i++ {
+		fmt.Println("Block:", i)
+		hash, err := c.GetBlockHash(int64(i))
+		if err != nil {
+			log.Fatalln(err)
+		}
+		block, err := c.GetBlockVerbose(hash, true)
+		if err != nil {
+			log.Fatalln(err)
+		}
+		b := bytes.Buffer{}
+		rdf.NewQuadEncoder(&b, rdf.NQuads)
+		blockContainer := &blockStruct{
+			block,
+		}
+		result := blockContainer.processBlock()
+		for _, blockTriple := range result {
+			fmt.Print(blockTriple.Serialize(rdf.NTriples))
+		}
 	}
-	log.Printf("Block count: %d", blockCount)
+
 	select {}
+}
+
+var subjmap map[string]string
+
+func init() {
+	subjmap = make(map[string]string)
+	subjmap["block.hash"] = "block.hash.%s"
+	subjmap["block.time"] = "block.time.%s"
 }
