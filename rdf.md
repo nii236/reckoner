@@ -2,6 +2,8 @@ This is an example of the RDF data that we expect will be parsed from this app.
 
 ```xml
 <block.hash.currblock123> <block.hash> "currblock123"
+<block.hash.currblock123> <block.tx> "currtx123"
+<block.hash.currblock123> <block.tx> "currtx456"
 <block.hash.currblock123> <block.rawtx> <tx.0.txid.currtx123>
 <block.hash.currblock123> <block.rawtx> <tx.1.txid.currtx456>
 
