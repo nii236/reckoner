@@ -1,32 +1,32 @@
 This is an example of the RDF data that we expect will be parsed from this app.
 
 ```xml
-<block.currblock123> <block.hash> "currblock123"
-<block.currblock123> <block.tx> "currtx123"
-<block.currblock123> <block.tx> "currtx456"
-<block.currblock123> <block.rawtx> <tx.0.currtx123>
-<block.currblock123> <block.rawtx> <tx.1.currtx456>
+<currblock123> <type.bitcoin.block.hash> "currblock123"
+<currblock123> <type.bitcoin.block.tx> "currtx123"
+<currblock123> <type.bitcoin.block.tx> "currtx456"
+<currblock123> <bitcoin.block.tx> <currtx123>
+<currblock123> <bitcoin.block.tx> <currtx456>
 
-<tx.0.currtx123> <tx.block> <block.currblock123>
-<tx.0.currtx123> <tx.blockhash> "currblock123"
-<tx.0.currtx123> <tx.txid> "currtx123"
-<tx.0.currtx123> <tx.vin> <tx.0.currtx123.vin.0>
-<tx.0.currtx123> <tx.vin> <tx.0.currtx123.vin.1>
+<currtx123> <bitcoin.tx.block> <currblock123>
+<currtx123> <type.bitcoin.tx.blockhash> "currblock123"
+<currtx123> <type.bitcoin.tx.txid> "currtx123"
+<currtx123> <bitcoin.tx.vin> <tx.0.currtx123.vin.0>
+<currtx123> <bitcoin.tx.vin> <tx.0.currtx123.vin.1>
 
-<tx.0.currtx123.vin.0> <vin.coinbase> "true"
-<tx.0.currtx123.vin.0> <vin.sequence> "1234567890"
+<currtx123.vin.0> <type.bitcoin.vin.coinbase> "true"
+<currtx123.vin.0> <type.bitcoin.vin.sequence> "1234567890"
 
-<tx.0.currtx123.vin.1> <vin.txid> "prevtx123"
-<tx.0.currtx123.vin.1> <vin.n> "0"
-<tx.0.currtx123.vin.1> <vin.vout> <tx.0.txid.prevtx123.vout.0>
+<currtx123.vin.1> <vin.txid> "prevtx123"
+<currtx123.vin.1> <vin.n> "0"
+<currtx123.vin.1> <vin.vout> <prevtx123.vout.0>
 
-<tx.0.currtx123.vin.2> <vin.txid> "prevprevtx123"
+<currtx123.vin.2> <vin.txid> "prevprevtx123"
 
-<tx.0.currtx123.vout.0> <vout.n> "0"
-<tx.0.currtx123.vout.0> <vout.value> "50"
-<tx.0.currtx123.vout.0> <vout.scriptpubkey> <tx.txid.currtx123.vout.0.scriptpubkey>
+<currtx123.vout.0> <vout.n> "0"
+<currtx123.vout.0> <vout.value> "50"
+<currtx123.vout.0> <vout.scriptpubkey> <currtx123.vout.0.scriptpubkey>
 
-<tx.0.currtx123.vout.0.scriptpubkey> <scriptpubkey.addresses> "1abc"
-<tx.0.currtx123.vout.0.scriptpubkey> <scriptpubkey.addresses> "1def"
-<tx.0.currtx123.vout.0.scriptpubkey> <scriptpubkey.addresses> "1ghi"
+<currtx123.vout.0.scriptpubkey> <scriptpubkey.addresses> "1abc"
+<currtx123.vout.0.scriptpubkey> <scriptpubkey.addresses> "1def"
+<currtx123.vout.0.scriptpubkey> <scriptpubkey.addresses> "1ghi"
 ```
