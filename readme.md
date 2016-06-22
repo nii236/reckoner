@@ -13,11 +13,11 @@ This is a continuation of my personal work from [here](http://blog.thefrontiergr
 
 ```
 # Pull blocks 0 to 1000 from the BTCD daemon
-$ btcer parse -s 0 -e 1000 > blocktriples.rdf
+$ btcer parse -s 0 -e 1000 | gzip > blocktriples
 # Assign UIDs to subjects
-$ dgraphassigner --numInstances 1 --instanceIdx 0 --rdf blocktriples.rdf --uids ~/dgraph/uids/
+$ dgraphassigner --rdfgzips blocktriples.gzip --uids ~/dgraph/uids/
 # Load into dgraph
-$ dgraphloader --numInstances 1 --instanceIdx 0 --rdf blocktriples.rdf--uids ~/dgraph/uasync.final --postings ~/dgraph/p0
+$ dgraphloader --rdfgzips blocktriples.gzip --uids ~/dgraph/uasync.final/ --postings ~/dgraph/p0/
 # Run dgraph
 $ dgraph --mutations ~/dgraph/m --postings ~/dgraph/p --uids ~/dgraph/u
 ```
