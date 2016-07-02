@@ -3,7 +3,7 @@ package cmd
 import (
 	"log"
 
-	"github.com/nii236/btcer/parse"
+	"github.com/nii236/reckoner/parse"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )

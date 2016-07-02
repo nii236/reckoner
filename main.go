@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/nii236/btcer/cmd"
+	"github.com/nii236/reckoner/cmd"
 )
 
 func main() {
