@@ -1,0 +1,74 @@
+hash: b14620d9d0fb8dc072796c8a78d5a96ddd8322e79ed6dd15edcbdfe1e4178114
+updated: 2016-07-02T09:01:43.564563816+08:00
+imports:
+- name: github.com/btcsuite/btcd
+  version: 1ffc3dc18d95b7b0aaf841dc46bd363f546ceb8d
+  subpackages:
+  - btcjson
+  - chaincfg
+  - wire
+  - btcec
+- name: github.com/btcsuite/btclog
+  version: f96df2375f37300305f329b8e5258764b4f19a7f
+- name: github.com/btcsuite/btcrpcclient
+  version: 64922553b5c21f333438edaed6e0ba2b5a7760ee
+- name: github.com/btcsuite/btcutil
+  version: 2c26dd81a59fd671a2218d63ad138a6dd4d693bd
+  subpackages:
+  - base58
+- name: github.com/btcsuite/fastsha256
+  version: 302ad4db268b46f9ebda3078f6f7397f96047735
+- name: github.com/btcsuite/go-socks
+  version: cfe8b59e565c1a5bd4e2005d77cd9aa8b2e14524
+  subpackages:
+  - socks
+- name: github.com/btcsuite/golangcrypto
+  version: 53f62d9b43e87a6c56975cf862af7edf33a8d0df
+  subpackages:
+  - ripemd160
+- name: github.com/btcsuite/seelog
+  version: 313961b101eb55f65ae0f03ddd4e322731763b6c
+- name: github.com/btcsuite/websocket
+  version: 31079b6807923eb23992c421b114992b95131b55
+- name: github.com/BurntSushi/toml
+  version: f0aeabca5a127c4078abb8c8d64298b147264b55
+- name: github.com/fsnotify/fsnotify
+  version: a8a77c9133d2d6fd8334f3260d06f60e8d80a5fb
+- name: github.com/hashicorp/hcl
+  version: 61f5143284c041681f76a5b63efcb232aaa94737
+  subpackages:
+  - hcl/ast
+  - hcl/parser
+  - hcl/token
+  - json/parser
+  - hcl/scanner
+  - hcl/strconv
+  - json/scanner
+  - json/token
+- name: github.com/inconshreveable/mousetrap
+  version: 76626ae9c91c4f2a10f34cad8ce83ea42c93bb75
+- name: github.com/knakk/rdf
+  version: 6c3dd784a7ec4170e9b260323f62884cd9b7ee96
+- name: github.com/magiconair/properties
+  version: c265cfa48dda6474e208715ca93e987829f572f8
+- name: github.com/mitchellh/mapstructure
+  version: d2dd0262208475919e1a362f675cfc0e7c10e905
+- name: github.com/pkg/errors
+  version: a2d6902c6d2a2f194eb3fb474981ab7867c81505
+- name: github.com/spf13/cast
+  version: 27b586b42e29bec072fe7379259cc719e1289da6
+- name: github.com/spf13/cobra
+  version: 6a8bd97bdb1fc0d08a83459940498ea49d3e8c93
+- name: github.com/spf13/jwalterweatherman
+  version: 33c24e77fb80341fe7130ee7c594256ff08ccc46
+- name: github.com/spf13/pflag
+  version: 367864438f1b1a3c7db4da06a2f55b144e6784e0
+- name: github.com/spf13/viper
+  version: c1ccc378a054ea8d4e38d8c67f6938d4760b53dd
+- name: golang.org/x/sys
+  version: 62bee037599929a6e9146f29d10dd5208c43507d
+  subpackages:
+  - unix
+- name: gopkg.in/yaml.v2
+  version: a83829b6f1293c91addabc89d0571c246397bbf4
+devImports: []

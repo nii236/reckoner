@@ -42,7 +42,7 @@ func Fetch(start, end int) {
 			log.Fatalln(err)
 		}
 		b := bytes.Buffer{}
-		rdf.NewQuadEncoder(&b, rdf.NQuads)
+		rdf.NewTripleEncoder(&b, rdf.NTriples)
 		blockContainer := &blockStruct{
 			block,
 		}
