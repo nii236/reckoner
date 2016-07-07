@@ -9,6 +9,30 @@ This is a continuation of my personal work from [here](http://blog.thefrontiergr
 - dgraph
 - Go 1.6 or above
 
+## Setup
+
+### btcd
+
+```
+git clone https://github.com/btcsuite/btcd $GOPATH/src/github.com/btcsuite/btcd
+cd $GOPATH/src/github.com/btcsuite/btcd
+git pull && glide install
+go install . ./cmd/...
+```
+
+### reckoner
+
+```
+glide install
+go build
+./reckoner parse > triples
+wc -l triples
+tail triples
+gzip triples
+cayley init -db bolt
+cayley load --quads ./triples.gz -db bolt -format nquad -ignoremissing -ignoredup
+```
+
 ## Usage
 
 ```
